@@ -57,13 +57,13 @@
 
 <div th:replace="/layout/fragments/nav.html :: nav"></div>
 
-<div class="jumbotron jumbotron-fluid bg-dark" id="wrapper">
+<div class="jumbotron jumbotron-fluid bg-dark" id="wrapper" style="height: 120%; margin-bottom: 9.5rem">
 
     <div class="jumbotron-background">
         <img th:src="@{/image/tomato.jpg}" class="blur ">
     </div>
 
-    <div class="container text-white">
+    <div class="container text-white" style="margin-top: 6rem">
         <div class="row">
             <div class="col-md-4">
                 <img th:src="@{${result.src}}" class="rounded float-start" alt="disease"/>
