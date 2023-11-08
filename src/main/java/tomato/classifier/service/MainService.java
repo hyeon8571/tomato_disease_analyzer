@@ -70,6 +70,6 @@ public class MainService {
         Disease target = diseaseRepository.findById(resultDto.getName())
                 .orElseThrow(() -> new CustomApiException("질병 조회를 실패했습니다."));
 
-        return DiseaseDto.convertDto(target, resultDto.getProb());
+        return DiseaseDto.toDto(target, resultDto.getProb());
     }
 }

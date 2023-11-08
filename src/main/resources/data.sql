@@ -121,36 +121,44 @@ insert into article (title, user_id, content, delete_yn, update_yn, created_time
 insert into article (title, user_id, content, delete_yn, update_yn, created_time, modified_time) values ('Proin leo odio, porttitor id, consequat in, consequat ut, nulla.', 1, 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', false, true, '2023-08-09 05:23:11', '2023-01-11 23:29:58');
 insert into article (title, user_id, content, delete_yn, update_yn, created_time, modified_time) values ('Maecenas rhoncus aliquam lacus.', 1, 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.', false, false, '2023-07-06 18:57:03', '2023-06-23 08:00:24');
 
-INSERT INTO disease (id, d_name, solution, src) VALUES ('1Tomato_Bacterial_spot', '토마토 세균성점무늬병',
+INSERT INTO disease (id, d_name, symptoms, solution, src) VALUES ('1Tomato_Bacterial_spot', '토마토 세균성점무늬병',
+                                                        '담갈색 내지 암갈색의 수침상에 소반점이 생긴다. 병반의 내부는 엷고 광택이 나며 병반의 외부는 황색으로 변한다. 병든 잎은 아래 잎부터 마른다. 과실에는 암갈색의 둥근 반점이 생기면서 그 주변이 수침상으로 된다. 표면은 처음에 밋밋하나 나중에는 병반 부위의 표피가 붕괴되어 거칠어지고 더뎅이 모양으로 된다. 어린 과실에만 발생하고 성숙과에는 발생하지 않는다.',
                                                         '종자를 50℃의 물에 25분간 침지하여 소독하고, 재배는 배수가 잘 되는 비옥한 토지를 선택하여 퇴비를 많이 넣어서 재배한다. 하우스에서는 저온기라도 다습하면 발생하게 되므로 환기와 통풍에 힘쓰고 급격한 온도변화가 없도록 한다. 약제방제는 농업용 항생제인 농용신수화제 1,200배액, 요네폰수화제 500배액, 가스란수화제 1,000배액을 발병초기에 2∼3회 살포하면 효과적이다.',
                                                         '/result/1Tomato_Bacterial_spot.JPG');
 
-INSERT INTO disease (id, d_name, solution, src) VALUES ('2Tomato_Early_blight', '토마토 겹둥근무늬병',
+INSERT INTO disease (id, d_name, symptoms, solution, src) VALUES ('2Tomato_Early_blight', '토마토 겹둥근무늬병',
+                                                        '잎, 줄기, 과실에 발생한다. 감염부위에는 처음에 타원형의 갈색반점으로 나타나고, 진전되면 암갈색의 겹무늬반점으로 확대된다. 병든 부위는 마른 상태로 썩으며, 겹무늬가 생기고 후에 분생포자가 형성되어 검은 색을 띠게 된다. 줄기의 감염부위 위쪽으로는 시들고 말라죽는다. 병든 과실은 검게 썩어 상품가치를 잃게 된다. 이 병은 급격히 만연되거나 치명적인 병해는 아니므로 다른 병을 겸하여 방제가 가능하다. 관수를 적당히 하고 비료양분이 떨어지지 않도록 지효성 비료와 퇴비를 많이 시용하는 것이 좋다.',
                                                         '모판에서부터 발생되기 시작하므로 예방위주로 방제를 해야 한다. 또 이 병은 비료상태에 민감하므로 비배관리에 주의해야 한다. 방제약제로는 쿠퍼수화제 500배액, 놀란수화제 1,000배액 등이 있다.',
                                                         '/result/2Tomato_Early_blight.JPG');
 
-INSERT INTO disease (id, d_name, solution, src) VALUES ('3Tomato_Late_blight', '토마토 역병',
-                                                        '모판에서부터 온도, 습도 관리에 주의하여 저온 다습이 되지 않도록 한다. 특히 11월 - 다음해 4월에 걸쳐 저온기의 재배는 저온다습에 주의한다. ',
+INSERT INTO disease (id, d_name, symptoms, solution, src) VALUES ('3Tomato_Late_blight', '토마토 역병',
+                                                        '유묘기부터 전 생육기에 발생되며, 주로 뿌리와 땅가 줄기부위에 발생되지만 병원균이 빗물에 튀어 올라 열매 등의 지상부를 침해하기도 한다. 현재까지 3종의 역병균이 토마토 뿌리썩음역병을 일으키는 것으로 확인되었는데, 균종류별, 재배품종별 병증상은 매우 유사하다. 유묘기에 감염되면 그루 전체가 심하게 시들고 곧 죽으며, 생육중기나 후기에 감염되면 초기에는 아랫잎부터 약간 황화되어 시들고 말라죽는다. 병든 그루의 땅가줄기와 굵은 뿌리는 수침상으로 썩으며 껍질을 벗겨 보면 줄기내부가 연한 갈색이나 암갈색으로 썩어 있다. 간혹 지표면 가까이에 매달린 과실에도 수침상의 병반이 나타나 회갈색의 큰 원형병반으로 확대되어 썩으며, 다습한 환경에서 흰 곰팡이 균사체와 포자가 많이 형성된다.',
+                                                        '모판에서부터 온도, 습도 관리에 주의하여 저온 다습이 되지 않도록 한다. 특히 11월 - 다음해 4월에 걸쳐 저온기의 재배는 저온다습에 주의한다.',
                                                         '/result/3Tomato_Late_blight.JPG');
 
-INSERT INTO disease (id, d_name, solution, src) VALUES ('4Tomato_Leaf_Mold', '토마토 잎곰팡이병',
+INSERT INTO disease (id, d_name, symptoms, solution, src) VALUES ('4Tomato_Leaf_Mold', '토마토 잎곰팡이병',
+                                                        '잎의 뒷면에 짙은 녹색의 뚜렷하지 않은 병반이 생기고, 병무늬 위에 옅은 갈색의 곰팡이가 생긴다. 병반이 많아지면 황색으로 변하면서 말라 죽는다. 아랫잎부터 차례로 발병하여 윗잎까지 전염되어 병이 심하면 잎은 없어지고 과일만 남는다. 열매는 꼭지를 둘러싸는 원형의 흑색 병반이 생기고 병환부는 경화되어 움푹해진다.',
                                                         '환기에 주의하여 습도를 낮추어주고 지면에는 비닐멀칭을 해서 지표면의 습기가 올라가지 않도록 한다. 점적관수를 이용해서 비닐 멀칭 밑으로 관수되게 하여 습기를 낯추는데 중점을 두어야 한다. 종자는 건전주에서 채종하여 사용하고 종자소독을 철저히 한다. 사전예방으로 모판 때부터 10-15일 간격으로 약제를 살포한다',
                                                         '/result/4Tomato_Leaf_Mold.JPG');
 
-INSERT INTO disease (id, d_name, solution, src) VALUES ('5Tomato_Septoria_leaf_spot', '토마토 흰무늬병',
-                                                        '종자를 선별하고, 소독하여 파종한다 재배 시 균형시비를 한다. 병든 잎은 조기에 제거한다. 온실재배 시 내부가 다습하지 않도록 환기를 한다.',
+INSERT INTO disease (id, d_name, symptoms, solution, src) VALUES ('5Tomato_Septoria_leaf_spot', '토마토 흰무늬병',
+                                                        '잎, 잎자루, 줄기, 가지, 과경에 발생한다. 발생초기에는 식물체의 아래쪽에서부터 병증상이 나타나고, 위쪽으로 진전되어 올라간다. 감염부위에는 갈색 내지 암갈색의 작은 반점이 형성되고, 진전되면 병반의 내부는 회색으로 변하며 그곳에 흑색의 소립점이 보인다. 심하게 병든 잎은 황색으로 변하여 마르고 일찍 떨어진다. 심하게 병든 가지는 황색으로 변해 죽는다. 진균계의 불완전균에 속하며, 병자각과 병포자를 형성한다.',
+                                                        '종자를 선별하고, 소독하여 파종한다. 재배 시 균형시비를 한다. 병든 잎은 조기에 제거한다. 온실재배 시 내부가 다습하지 않도록 환기를 한다.',
                                                         '/result/5Tomato_Septoria_leaf_spot.JPG');
 
-INSERT INTO disease (id, d_name, solution, src) VALUES ('6Tomato_Spider_Mites_Two', '토마토 점박이응애',
-                                                        '3월 이전에는 기계유제를 이용하여 방제하고. 5월경에 응애들의 밀도가 증가하므로 알이나 유충 등에 효과가 좋은 약제를 살포하여야 한다. 온도조건이 좋아지는 시기인 7월 상순경에 발생밀도를 관찰하여 엽당 2-3마리 이상이면 2차방제를 하여야 한다. 이 때 제대로 방제가 안 되면 7월 하순-8월에 큰 피해를 입게 된다. 8월 상-중순 고온기로서 엽당 3-4마리 이상이면 약제를 살포하여야 한다',
+INSERT INTO disease (id, d_name, symptoms, solution, src) VALUES ('6Tomato_Spider_Mites_Two', '토마토 점박이응애',
+                                                        '토마토 식물의 잎에 작은 갈색 또는 검은색 점이 나타난다. 이러한 점은 후에 확대되어 잎 전체를 침범할 수 있다. 토마토 열매에도 점박이가 생길 수 있으며, 이러한 열매는 부패하거나 가치가 떨어질 수 있다. 식물의 줄기와 꼭지 부분에도 병징이 나타날 수 있으며, 이로 인해 식물의 성장에 부정적인 영향을 미칠 수 있다.',
+                                                        '발생초기에 철저히 방제하여야 하며 충체의 표면에 충분히 묻도록 충분한 양을 살포하여야 한다. 3월 이전에는 기계유제를 이용하여 방제하고. 5월경에 응애들의 밀도가 증가하므로 알이나 유충 등에 효과가 좋은 약제를 살포하여야 한다. 온도조건이 좋아지는 시기인 7월 상순경에 발생밀도를 관찰하여 엽당 2-3마리 이상이면 2차방제를 하여야 한다. 이 때 제대로 방제가 안 되면 7월 하순-8월에 큰 피해를 입게 된다. 8월 상-중순 고온기로서 엽당 3-4마리 이상이면 약제를 살포하여야 한다',
                                                         '/result/6Tomato_Spider_Mites_Two.JPG');
 
-INSERT INTO disease (id, d_name, solution, src) VALUES ('7Tomato_Target_Spot', '토마토 표적 반점',
-                                                        '클로로탈로닐, 만코제브, 옥시염화구리를 함유한 제품은 연구 실험에서 표적 지점을 잘 제어하는 것으로 나타났습니다. 스트로빌루린 살진균제인 azoxystrobin 및 pyraclostrobin, 살진균제 boscalid 및 전신 획득 저항(SAR) 유발제인 acibenzolar-S-methyl도 표적 지점을 잘 제어하는 것으로 나타났습니다.',
+INSERT INTO disease (id, d_name, symptoms, solution, src) VALUES ('7Tomato_Target_Spot', '토마토 표적 반점',
+                                                        '표적 반점 증상은 작고 어두운 병변으로 시작하여 이식 시 동심원 패턴과 그 주변에 노란색 후광이 있는 밝은 갈색 병변을 형성하기 위해 확대된다. 병변은 캐노피 내부에서 볼 수 있으며 미기후는 감염 과정을 선호한다.',
+                                                        '클로로탈로닐, 만코제브, 옥시염화구리를 함유한 제품은 연구 실험에서 표적 지점을 잘 제어하는 것으로 나타났다. 스트로빌루린 살진균제인 azoxystrobin 및 pyraclostrobin, 살진균제 boscalid 및 전신 획득 저항(SAR) 유발제인 acibenzolar-S-methyl도 표적 지점을 잘 제어하는 것으로 나타났다.',
                                                         '/result/7Tomato_Target_Spot.JPG');
 
-INSERT INTO disease (id, d_name, solution, src) VALUES ('8Tomato_YellowLeaf', '토마토황화잎말림바이러스',
+INSERT INTO disease (id, d_name, symptoms, solution, src) VALUES ('8Tomato_YellowLeaf', '토마토황화잎말림바이러스',
+                                                        '단자엽과 쌍자엽 식물 등 약 6과 20여종 이상 보고되어 있으며, 주로 토마토 및 고추를 비롯한 가지과 작물 등에서 발생되는 병이다. 어린 토마토 식물체가 감염되면 심한 위축과 함께 잎이 작고 튀틀리게 되며, 크게 자란 토마토의 경우 정상적으로 자라지 못하고 잎이 노랗게 변색이 되며 안으로 굽어지는 잎말림 증상을 보인다. 꽃이 피지 않거나 꽃이 피어도 과실을 맺지 못하고 토마토 과실이 일부 맺더라도 상품 생산이 불가능하다.',
                                                         '하우스 내 및 주변의 철저한 관리가 필요하다. 토마토 재배 시설 주변에는 담배가루가 좋아하는 작물을 심지 말아야하며, 토마토 재배 시설 주변에 서식하는 토마토황화잎말림병의 중간 다리 역할을 하는 쑥 등 잡초들을 제거해야한다. 토마토 시설의 측창, 천창 및 출입문은 60메쉬 망을 설치하여 담배가루이 출입 및 외부로부터 유입을 차단해야한다.',
                                                         '/result/8Tomato_YellowLeaf.JPG');
 
-INSERT INTO disease (id, d_name, solution, src) VALUES ('9Tomato_Healthy', '건강한 토마토', '이상없음', '/result/9Tomato_Healthy.JPG');
+INSERT INTO disease (id, d_name, symptoms, solution, src) VALUES ('9Tomato_Healthy', '건강한 토마토', '이상없음', '이상없음', '/result/9Tomato_Healthy.JPG');

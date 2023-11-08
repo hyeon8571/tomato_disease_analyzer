@@ -39,11 +39,8 @@ public class Article extends BaseTime {
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL) // article 엔티티의 comments 필드의 주인은 반대편(commnet 엔티티)의 article필드
     private Set<Comment> comments;
 
-    @OneToMany(mappedBy = "article")
-    private List<Like> likes;
-
     @Builder
-    public Article(Long articleId, String title, User user, String content, boolean deleteYn, boolean updateYn, Set<Comment> comments, List<Like> likes) {
+    public Article(Long articleId, String title, User user, String content, boolean deleteYn, boolean updateYn, Set<Comment> comments) {
         this.articleId = articleId;
         this.title = title;
         this.user = user;
@@ -51,7 +48,6 @@ public class Article extends BaseTime {
         this.deleteYn = deleteYn;
         this.updateYn = updateYn;
         this.comments = comments;
-        this.likes = likes;
     }
 
     public static Article toEntity(ArticleDto target, User user) {

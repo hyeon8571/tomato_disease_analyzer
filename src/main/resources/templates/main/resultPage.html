@@ -75,7 +75,8 @@
                         <p class="col"></p>
                         <p class="col" th:text="${result.prob} + '%'" style ="text-align: right; font-size: 2rem;">확률 : 90%</p>
                     </div>
-                    <p th:text="${result.solution}" class = "content">해결책 : solution</p>
+                    <p style="white-space: pre-wrap; word-break: break-all; overflow: auto" th:text="${result.symptoms}">병징: symptoms</p>
+                    <p style="white-space: pre-wrap; word-break: break-all; overflow: auto" th:text="${result.solution}" class = "content">방제 : solution</p>
                 </div>
             </div>
         </div>
