@@ -8,6 +8,7 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: trace
 
 server:
+  port: 8080
   servlet:
     session:
       tracking-modes: cookie
