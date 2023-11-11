@@ -59,6 +59,15 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+/**
+ * -plain.jar 파일ㄹ은 jar 파일과는 다르게
+ * dependencies 를 제외한 [classes / resource]만을 포함하고 있어
+ * java -jar 옵션으로 jar 파일을 실행시킬 수 없다.
+ */
+jar {
+    enabled = false
+}
+
 // Querydsl 설정부
 // Querydsl의 Q클래스를 빌드 디렉토리에서 꺼내기 위해 사용, 인텔리제이에서 생길 수 있는 잠재적인 문제를 피하기 위해, 기본값을 이용하여 큐클래스를 생상하면 빌드 디렉토리에 큐클래스가 생김, gradle 빌드할때 스캔하는 영역과 인텔리제이가 빌드할때 스캔하는 영역에 차이가 있음, 이 차이로 인해 인텔리제이가 빌드를 실행할 때와 그래들이 빌드를 실행할때 2번 스캔하면서 충돌이 일어나서 중복 문제가 발생
 def generated = 'src/main/generated'
