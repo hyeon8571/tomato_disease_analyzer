@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import tomato.classifier.config.auth.LoginUser;
 import tomato.classifier.domain.dto.ArticleDto;
+import tomato.classifier.domain.dto.ArticleLikesDto;
 import tomato.classifier.domain.entity.User;
 import tomato.classifier.domain.type.SearchType;
 import tomato.classifier.service.ArticleService;
@@ -30,7 +31,6 @@ import static tomato.classifier.domain.dto.user.UserResDto.*;
 public class ArticleController {
 
     private final ArticleService articleService;
-    private final CommentService commentService;
     private final AuthService authService;
 
     private final PaginationService paginationService;
@@ -67,11 +67,16 @@ public class ArticleController {
 
         ArticleDto articleDto = articleService.show(articleId);
 
+
         if (loginUser != null) {
 
             LoginResDto loginResDto = authService.findLoginUser(loginUser);
 
             model.addAttribute("loginUser", loginResDto);
+
+            ArticleLikesDto articleLikesDto = articleService.getLikeOrHateInfo(loginResDto, articleId);
+
+            model.addAttribute("articleLikes", articleLikesDto);
 
         } else {
             model.addAttribute("loginUser", new LoginResDto(new User()));
@@ -93,5 +98,6 @@ public class ArticleController {
 
         return "board/articleUpdate";
     }
+
 
 }

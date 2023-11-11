@@ -34,9 +34,13 @@ public class ArticleDto {
 
     private Integer commentCount;
 
+    private Integer likeNum;
+
+    private Integer hateNum;
+
 
     @Builder
-    public ArticleDto(Long articleId, String title, String content, String nickname, boolean deleteYn, boolean updateYn, LocalDateTime modifiedTime, Set<CommentDto> comments, Integer commentCount) {
+    public ArticleDto(Long articleId, String title, String content, String nickname, boolean deleteYn, boolean updateYn, LocalDateTime modifiedTime, Set<CommentDto> comments, Integer commentCount, Integer likeNum, Integer hateNum) {
         this.articleId = articleId;
         this.title = title;
         this.content = content;
@@ -46,6 +50,8 @@ public class ArticleDto {
         this.modifiedTime = modifiedTime;
         this.comments = comments;
         this.commentCount = commentCount;
+        this.likeNum = likeNum;
+        this.hateNum = hateNum;
     }
 
 
@@ -76,6 +82,8 @@ public class ArticleDto {
                     .modifiedTime(target.getModifiedTime())
                     .comments(organizedComments(commentDtos))
                     .commentCount(count)
+                    .likeNum(target.getLikeNum())
+                    .hateNum(target.getHateNum())
                     .build();
         } else {
             return ArticleDto.builder()
@@ -87,6 +95,8 @@ public class ArticleDto {
                     .updateYn(target.isUpdateYn())
                     .modifiedTime(target.getModifiedTime())
                     .commentCount(count)
+                    .likeNum(target.getLikeNum())
+                    .hateNum(target.getHateNum())
                     .build();
         }
     }

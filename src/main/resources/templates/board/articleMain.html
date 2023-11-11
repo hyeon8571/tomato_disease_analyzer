@@ -102,7 +102,7 @@
                         th:text="${#temporals.format(article.modifiedTime, 'yyyy-MM-dd HH:mm')}">작성일
                     </td>
                     <td th:text="'&nbsp;'+${article.commentCount}">댓글수</td>
-                    <td>&nbsp;30</td>
+                    <td th:text="${article.likeNum}">추천 수</td>
                 </tr>
                 </tbody>
             </table>

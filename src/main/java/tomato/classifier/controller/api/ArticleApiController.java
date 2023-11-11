@@ -4,8 +4,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import tomato.classifier.config.auth.LoginUser;
 import tomato.classifier.domain.dto.ArticleDto;
+import tomato.classifier.domain.dto.ArticleLikesDto;
 import tomato.classifier.domain.dto.ResponseDto;
 import tomato.classifier.domain.dto.request.ArticleRequest;
 import tomato.classifier.service.ArticleService;
@@ -41,6 +44,14 @@ public class ArticleApiController {
         ArticleDto dto = articleService.delete(articleId);
 
         return new ResponseEntity<>(new ResponseDto<>(1, "계시글 삭제 완료", dto), HttpStatus.OK);
+    }
+
+    @PostMapping("/like")
+    public ResponseEntity<?> likeHate(@RequestBody ArticleLikesDto articleLikesDto) {
+
+        ArticleLikesDto dto = articleService.likeOrHate(articleLikesDto);
+
+        return new ResponseEntity<>(new ResponseDto<>(1, "좋아요 처리 완료", dto), HttpStatus.OK);
     }
 }
 

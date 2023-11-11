@@ -19,6 +19,7 @@
         summary::-webkit-details-marker {
             display: none;
         }
+
     </style>
 </head>
 <body>
@@ -32,11 +33,11 @@
     <h1 class="mb-3 h2"><a href="/article" style="text-decoration: none; color: black">자유게시판</a></h1>
 </div>
 <div class="container" style="width: 75%; margin-top: 1rem">
-    <table class="table mb-1">
+    <table class="table mb-1" style="table-layout: fixed">
         <thead>
         <tr th:object="${loginUser}">
-            <th scope="col"><h3 style="white-space: pre-wrap; word-break: break-all; overflow: auto" th:text="${article.title}">title</h3></th>
-            <td>
+            <th scope="col"><h3><pre style="white-space: pre-wrap; word-break: break-all; overflow: auto; width: 1000px" th:text="${article.title}">title></pre></h3></th>
+            <th style="width: 5%">
                 <div class="dropdown" style="float: right"
                      th:if="${loginUser.nickname} != null and ${loginUser.nickname} == ${article.nickname}">
                     <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
@@ -49,22 +50,54 @@
                         <li><a class="dropdown-item" id="deleteBtn">삭제</a></li>
                     </ul>
                 </div>
-            </td>
+            </th>
         </tr>
         </thead>
 
         <tbody>
         <tr style="white-space: nowrap;">
-            <td><a th:text="${article.nickname} + '&emsp;&emsp;&emsp;'"></a><a style="font-size: 0.8rem; color: gray"
+            <td style="width: 241px"><a th:text="${article.nickname} + '&emsp;&emsp;&emsp;'"></a><a style="font-size: 0.8rem; color: gray"
                                                                                th:text="${#temporals.format(article.modifiedTime, 'yyyy-MM-dd HH:mm')}"></a>
             </td>
-            <td style="float: right">
-                <img src="/image/board/comment.png" alt="댓글 수" style="width: 1.5rem; height: 1.5rem">
-                <a th:text="${article.commentCount} + '&emsp;'">10</a>
-                <img src="/image/board/good.png" alt="추천 수" style="width: 1.5rem; height: 1.5rem"/>
-                <a th:text="${article.commentCount} + '&emsp;'">10</a>
-                <img src="/image/board/bad.png" alt="비추천 수" style="width: 1.5rem; height: 1.5rem">
-                <a th:text="${article.commentCount} + '&nbsp;'">10</a>
+            <td style="float: right; display: flex; width: 235px; margin-right: 1rem">
+                <div th:if="${loginUser.nickname == null}">
+                    <img src="/image/board/comment.png" alt="댓글 수" style="width: 1.5rem; height: 1.5rem">
+                    <a th:text="${article.commentCount} + '&emsp;'">10</a>
+                    <button type="button" th:onclick="checkLogin()" th:id="likeButton" style="background: none; border: none"><img src="/image/board/good.png"
+                                                                                      alt="추천 수"
+                                                                                      style="width: 1.5rem; height: 1.5rem"/>
+                    </button>
+                    <a th:text="${article.likeNum} + '&emsp;'">10</a>
+                    <button type="button" th:onclick="checkLogin()" th:id="hateButton" style="background: none; border: none"><img src="/image/board/bad.png"
+                                                                                      alt="비추천 수"
+                                                                                      style="width: 1.5rem; height: 1.5rem">
+                    </button>
+                    <a th:text="${article.hateNum} + '&nbsp;'">10</a>
+                </div>
+                <div th:if="${loginUser.nickname != null}">
+                    <img src="/image/board/comment.png" alt="댓글 수" style="width: 1.5rem; height: 1.5rem;">
+                    <a th:text="${article.commentCount} + '&emsp;'">10</a>
+                    <input style="margin-left: 1rem;" class="btn-check" type="checkbox" th:id="likeBtn"
+                           th:checked="${articleLikes.getRequestStatus() != null and articleLikes.getRequestStatus()}">
+                    <label autocomplete="off" th:id="likeLabel" th:for="likeBtn" class="btn">
+                        <div id="likeImg">
+                            <img src="/image/board/good.png"
+                                 alt="추천 수"
+                                 style="width: 1.5rem; height: 1.5rem">
+                        </div>
+                    </label>
+                        <a th:id="likeNum" th:text="${article.likeNum} + '&emsp;'">추천 수</a>
+                    <input style="margin-left: 5px" type="checkbox" th:id="hateBtn" class="btn-check"
+                           th:checked="${articleLikes.getRequestStatus() != null and !articleLikes.getRequestStatus()}">
+                    <label style="margin-left: 5px;" autocomplete="off" th:id="likeLabel" th:for="hateBtn" class="btn">
+                        <div id="hateImg">
+                            <img src="/image/board/bad.png"
+                                 alt="비추천 수"
+                                 style="width: 1.5rem; height: 1.5rem">
+                        </div>
+                    </label>
+                    <a th:id="hateNum" th:text="${article.hateNum} + '&emsp;'">비추천 수</a>
+                </div>
             </td>
         </tr>
         <tr>
@@ -110,7 +143,8 @@
                     <strong th:text="${comment.nickname}">Uno</strong>
                     <a style="font-size: 0.8rem; color: gray; margin-left: 1rem"
                        th:text="${#temporals.format(comment.modifiedTime, 'yyyy-MM-dd HH:mm')}">2022-01-01</a>
-                    <pre style="white-space: pre-wrap; word-break: break-all; overflow: auto" class="mb-1" th:text="${comment.content}">
+                    <pre style="white-space: pre-wrap; word-break: break-all; overflow: auto" class="mb-1"
+                         th:text="${comment.content}">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                             Lorem ipsum dolor sit amet
                     </pre>
@@ -118,15 +152,9 @@
                 <div style="display: flex; width: 10%">
                     <!-- 대댓글 입력 -->
                     <div class="row">
-                        <details class="col-md-10 col-lg-9 mb-4">
-                            <summary><img src="/image/board/comment.png" alt="대댓글" style="width: 1.5rem; height: 1.5rem"></summary>
-                            <form class="comment-form" style="width: 400%">
-                                <input type="hidden" class="article-id">
-                                <input type="hidden" class="parent-comment-id" th:value="${comment.commentId}">
-                                <textarea id="childComment" class="form-control comment-textbox" placeholder ="댓글 쓰기.." rows="2" required></textarea>
-                                <button class="form-control btn btn-primary mt-2" type="button" id="addChildComment">쓰기</button>
-                            </form>
-                        </details>
+                       <button style="background: none; border: none" type="button" th:onclick="addChildCommentForm()">
+                            <img src="/image/board/comment.png" alt="대댓글"
+                                          style="width: 1.5rem; height: 1.5rem; margin-bottom: 1rem"></button>
                     </div>
                     <!-- 수정, 삭제 -->
                     <div class="dropdown" style="float: right; width: 10%"
@@ -145,22 +173,33 @@
                         </ul>
                     </div>
                 </div>
+                <form id="addChildCommentForm" class="comment-form" style="width: 100%; display: none">
+                    <input type="hidden" class="article-id">
+                    <input type="hidden" class="parent-comment-id" th:value="${comment.commentId}">
+                    <textarea id="childComment" class="form-control comment-textbox" placeholder="댓글 쓰기.."
+                              rows="2" required></textarea>
+                    <button class="form-control btn btn-primary mt-2" type="button" th:onclick="addChildComment()">
+                        쓰기
+                    </button>
+                </form>
             </div>
             <!-- 자식 댓글 -->
-            <ul class="row me-0" th:if="${!comment.getChildComments().isEmpty()}" th:remove="all-but-first" style="list-style-image: url(/image/board/childComment.png);">
-                <li class="child-comment" th:each="childComment : ${comment.getChildComments()}" style="border-bottom: 1px solid #efefef;">
+            <ul class="row me-0" th:if="${!comment.getChildComments().isEmpty()}" th:remove="all-but-first"
+                style="list-style-image: url(/image/board/childComment.png);">
+                <li class="child-comment" th:each="childComment : ${comment.getChildComments()}"
+                    style="border-bottom: 1px solid #efefef;">
                     <form class="comment-delete-form">
                         <div class="row">
                             <div class="col-md-10 col-lg-9">
                                 <strong th:text="${childComment.nickname}">Uno</strong>
                                 <a style="font-size: 0.8rem; color: gray; margin-left: 1rem"
                                    th:text="${#temporals.format(childComment.modifiedTime, 'yyyy-MM-dd HH:mm')}">2022-01-01</a>
-                                <pre style="white-space: pre-wrap;" class="mb-1" th:text="${childComment.content}">
+                                <pre style="white-space: pre-wrap; word-break: break-all; overflow: auto" class="mb-1" th:text="${childComment.content}">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
                                     Lorem ipsum dolor sit amet
                                 </pre>
                             </div>
-                            <div class="dropdown" style="float: right; width: 5%; margin-left: 8.28rem"
+                            <div class="dropdown" style="float: right; width: 5%; margin-left: 7rem"
                                  th:if="${loginUser.nickname} != null and ${loginUser.nickname} == ${childComment.nickname}">
                                 <button type="button" data-bs-toggle="dropdown" aria-expanded="false"
                                         style="background: none; border: none; outline: none">
@@ -216,6 +255,8 @@
 </body>
 
 <script>
+
+
     const article_Id = document.querySelector("#hiddenId").value;
 
     // 게시글 삭제
@@ -330,10 +371,22 @@
     })
 
 
-    // 대댓글 작성
-    const addChildBtn = document.querySelector("#addChildComment");
+    //대댓글 작성 폼
+    function addChildCommentForm() {
+        const addChildCommentForm = document.querySelector("#addChildCommentForm");
 
-    addChildBtn.addEventListener('click', function() {
+        if (addChildCommentForm.style.display == 'none') {
+            addChildCommentForm.style.display = ''
+        } else {
+            addChildCommentForm.style.display = 'none'
+        }
+
+
+    }
+
+    // 대댓글 작성
+
+    function addChildComment() {
         const childComment = {
             articleId: article_Id,
             nickname: document.querySelector("#commentUser").value,
@@ -355,7 +408,121 @@
 
             window.location.reload();
         })
+    }
+
+
+    function checkLogin() {
+        if(confirm("로그인 후 이용 가능합니다. 로그인 하시겠습니까?")) {
+            window.location.href = '/login';
+        } else {
+            window.location.href = document.referrer;
+        }
+    }
+
+    // 좋아요 클릭
+    const likeBtn = document.querySelector("#likeBtn");
+    likeBtn.addEventListener('change', function () {
+        const likeImg = document.querySelector("#likeImg");
+        const hateImg = document.querySelector("#hateImg");
+        const hateBtn = document.querySelector("#hateBtn");
+        const likeBtn = document.querySelector("#likeBtn")
+        const likeA = document.querySelector("#likeNum");
+        const hateA = document.querySelector("#hateNum");
+
+        const url = "/api/article/like";
+
+        let likeCnt = Number(likeA.innerText);
+        let hateCnt = Number(hateA.innerText);
+
+        if (hateBtn.checked) {
+            hateBtn.checked = false;
+            hateImg.innerHTML = "<img id=\"hateImg\" src=\"/image/board/bad.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+            likeImg.innerHTML = "<img id=\"likeImg\" src=\"/image/board/selectGood.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+            hateA.innerText = --hateCnt;
+            likeA.innerText = ++likeCnt;
+        } else {
+            if (likeBtn.checked) {
+                likeImg.innerHTML = "<img id=\"likeImg\" src=\"/image/board/selectGood.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+                likeA.innerText = ++likeCnt;
+            } else {
+                likeImg.innerHTML = "<img id=\"likeImg\" src=\"/image/board/good.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+                likeA.innerText = --likeCnt;
+            }
+        }
+
+        fetchLike(url, true);
+
     })
+
+    // 싫어요 클릭
+    const hateBtn = document.querySelector("#hateBtn");
+    hateBtn.addEventListener('change', function () {
+        const likeImg = document.querySelector("#likeImg");
+        const hateImg = document.querySelector("#hateImg");
+        const likeBtn = document.querySelector("#likeBtn");
+        const hateBtn = document.querySelector("#hateBtn");
+        const likeA = document.querySelector("#likeNum");
+        const hateA = document.querySelector("#hateNum");
+
+        const url = "/api/article/like";
+
+        let likeCnt = Number(likeA.innerText);
+        let hateCnt = Number(hateA.innerText);
+
+        if (likeBtn.checked) {
+            likeBtn.checked = false;
+            hateImg.innerHTML = "<img id=\"hateImg\" src=\"/image/board/selectBad.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+            likeImg.innerHTML = "<img id=\"likeImg\" src=\"/image/board/good.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+            hateA.innerText = ++hateCnt;
+            likeA.innerText = --likeCnt;
+        } else {
+            if (hateBtn.checked) {
+                hateImg.innerHTML = "<img id=\"likeImg\" src=\"/image/board/selectBad.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+                hateA.innerText = ++hateCnt;
+            } else {
+                hateImg.innerHTML = "<img id=\"likeImg\" src=\"/image/board/bad.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+                hateA.innerText = --hateCnt;
+            }
+        }
+
+        fetchLike(url, false);
+
+    })
+
+
+    function fetchLike(url, check) {
+        const Dto = {
+            articleId: article_Id,
+            nickname: document.querySelector("#commentUser").value,
+            requestStatus: check
+        }
+
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(Dto),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+    }
+
+
+    window.onload = function () {
+        const likeImg = document.querySelector("#likeImg");
+        const hateImg = document.querySelector("#hateImg");
+
+        if (likeBtn.checked) {
+            likeImg.innerHTML = "<img id=\"likeImg\" src=\"/image/board/selectGood.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+            hateImg.innerHTML = "<img id=\"hateImg\" src=\"/image/board/bad.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+        } else if (hateBtn.checked) {
+            likeImg.innerHTML = "<img id=\"likeImg\" src=\"/image/board/good.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+            hateImg.innerHTML = "<img id=\"hateImg\" src=\"/image/board/selectBad.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+        } else {
+            likeImg.innerHTML = "<img id=\"likeImg\" src=\"/image/board/good.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+            hateImg.innerHTML = "<img id=\"hateImg\" src=\"/image/board/bad.png\" alt=\"Checkbox Image\" style=\"width:1.5rem; height: 1.5rem;\">"
+        }
+    }
+
 
 </script>
 

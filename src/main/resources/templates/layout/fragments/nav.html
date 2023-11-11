@@ -1,56 +1,50 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
-    <style>
-        .bg-light {
-            background-color: rgb(255, 255, 255);
-        }
-        .hidden {
-            display: none;
-        }
-    </style>
 </head>
 <body>
 <div th:fragment="nav">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 4.5rem; border-bottom: 0.2px solid black">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 5rem; border-bottom: 0.2px solid black">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="/image/mainlogo.png" alt="메인 로고"
-                                                  style="width: 3rem; height: 2rem;"></a>
+            <a class="navbar-brand" th:href="@{/main}"><img src="/image/mainLogo.png" alt="메인 로고"
+                                                            style="width: 3rem; height: 2rem;"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active" aria-current="page" th:href="@{/main}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/article">Community</a>
+                        <a class="nav-link active" th:href="@{/article}">Community</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav">
+
+                <ul class="navbar-nav mb-2 mb-lg-0">
                     <block id="loginBtn" class="content" th:if="${#request.getCookies() == null}">
                         <li class="nav-item" style="margin-right: 0.7rem;">
-                            <a class="link-primary" href="/login" style="text-decoration: none;"><img src="/image/navbar/login.png" alt="Login"
-                                                                                                      style="width: 2rem; height: 2rem;"></a>
+                            <a class="link-primary" href="/login" style="text-decoration: none;"><img
+                                    src="/image/navbar/login.png" alt="Login"
+                                    style="width: 2rem; height: 2rem;"></a>
                         </li>
                     </block>
                     <block id="mypageBtn" class="content" th:if="${#request.getCookies() != null}">
                         <li class="nav-item" style="margin-right: 0.7rem;">
-                            <a href="/mypage" class="link-success" style="text-decoration: none"><img src="/image/navbar/mypage.png" alt="MyPage"
-                                                                                                      style="width: 2rem; height: 2rem;"></a>
+                            <a href="/mypage" class="link-success" style="text-decoration: none"><img
+                                    src="/image/navbar/mypage.png" alt="MyPage"
+                                    style="width: 2rem; height: 2rem;"></a>
                         </li>
                     </block>
                     <block id="logoutBtn" th:if="${#request.getCookies() != null}">
                         <li class="nav-item" style="margin-right: 0.7rem; float: right">
-                            <a class="link-danger" href="/api/logout" style="text-decoration: none"><img src="/image/navbar/logout.png" alt="Logout"
-                                                                                                         style="width: 2rem; height: 2rem;"></a>
+                            <a class="link-danger" href="/api/logout" style="text-decoration: none"><img
+                                    src="/image/navbar/logout.png" alt="Logout"
+                                    style="width: 2rem; height: 2rem;"></a>
                         </li>
                     </block>
                 </ul>
@@ -61,20 +55,3 @@
 </div>
 </body>
 </html>
-
-<script>
-    // const logoutBtn = document.querySelector("#logoutBtn");
-    //
-    // logoutBtn.addEventListener('click', function() {
-    //     const url = "/api/logout";
-    //     fetch(url, {
-    //         method: "POST"
-    //     }).then(response => {
-    //         console.log(response)
-    //         if (response.ok) {
-    //             window.location.href = "/";
-    //         }
-    //     })
-    })
-</script>
-

@@ -8,7 +8,6 @@ import tomato.classifier.domain.dto.request.ArticleRequest;
 import tomato.classifier.handler.ex.CustomApiException;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,11 +35,17 @@ public class Article extends BaseTime {
     @Column
     private boolean updateYn;
 
+    @Column
+    private Integer likeNum;
+
+    @Column
+    private Integer hateNum;
+
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL) // article 엔티티의 comments 필드의 주인은 반대편(commnet 엔티티)의 article필드
     private Set<Comment> comments;
 
     @Builder
-    public Article(Long articleId, String title, User user, String content, boolean deleteYn, boolean updateYn, Set<Comment> comments) {
+    public Article(Long articleId, String title, User user, String content, boolean deleteYn, boolean updateYn, Set<Comment> comments, Integer likeNum, Integer hateNum) {
         this.articleId = articleId;
         this.title = title;
         this.user = user;
@@ -48,18 +53,21 @@ public class Article extends BaseTime {
         this.deleteYn = deleteYn;
         this.updateYn = updateYn;
         this.comments = comments;
+        this.likeNum = likeNum;
+        this.hateNum = hateNum;
     }
 
     public static Article toEntity(ArticleDto target, User user) {
-        if(target.getArticleId() != null)
-            throw new CustomApiException("DTO -> ENTITY 실패, Article");
 
         return Article.builder()
+                .articleId(target.getArticleId())
                 .title(target.getTitle())
                 .user(user)
                 .content(target.getContent())
                 .deleteYn(target.isDeleteYn())
                 .updateYn(target.isUpdateYn())
+                .likeNum(target.getLikeNum())
+                .hateNum(target.getHateNum())
                 .build();
     }
 

@@ -38,8 +38,13 @@ public class User extends BaseTime{
     @OneToMany(mappedBy = "user")
     private List<Article> articles;
 
+    @Column
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<ArticleLikes> articleLikesList;
+
+
     @Builder
-    public User(Long id, String loginId, String password, String username, String nickname, String email, Role role, List<Article> articles) {
+    public User(Long id, String loginId, String password, String username, String nickname, String email, Role role, List<Article> articles, List<ArticleLikes> articleLikesList) {
         this.id = id;
         this.loginId = loginId;
         this.password = password;
@@ -48,6 +53,7 @@ public class User extends BaseTime{
         this.email = email;
         this.role = role;
         this.articles = articles;
+        this.articleLikesList = articleLikesList;
     }
 
 }
