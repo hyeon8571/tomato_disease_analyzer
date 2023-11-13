@@ -1,5 +1,5 @@
 server:
-  port: 5000
+  port: 8080
   servlet:
     encoding:
       charset: utf-8
@@ -7,10 +7,10 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mariadb://${rds.hostname}:${rds.port}/${rds.db.name}
+    url: jdbc:mariadb://${RDS_ENDPOINT}:${RDS_PORT}/${RDS_DB_NAME}
     driver-class-name: org.mariadb.jdbc.Driver
-    username: ${rds.username}
-    password: ${rds.password}
+    username: ${RDS_USERNAME}
+    password: ${RDS_PASSWORD}
   jpa:
     open-in-view: false
     hibernate:
@@ -20,4 +20,6 @@ spring:
 
 logging:
   level:
-    '[shop.mtcoding.bank]': INFO
+    tomato.tomato.classifier: debug
+    org.springframework.web.servlet: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
