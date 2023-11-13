@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-<div th:replace="/layout/fragments/nav.html :: nav"></div>
+<div th:replace="layout/fragments/nav.html :: nav"></div>
 <div id="background" class="bg-image p-5 text-center shadow-1-strong text-white"
      style="flex: 1;background-image: url('/image/tomato.jpg'); height:80vh; background-repeat:no-repeat; background-size:cover;">
     <div class="container">
@@ -47,7 +47,7 @@
         </div>
     </div> <!-- /container -->
 </div>
-<div th:replace="/layout/fragments/footer.html :: footer"></div>
+<div th:replace="layout/fragments/footer.html :: footer"></div>
 <div id="div_load_image" style="position:absolute; top:38%; left:45%;width:0px;height:0px; z-index:9999; background:#f0f0f0; filter:alpha(opacity=50); opacity:alpha*0.5; margin:auto; padding:0; text-align:center">
     <img src="/image/Loading.gif" style="width:170px; height:170px;">
 </div>

@@ -26,10 +26,10 @@ public class MainService {
 
     private final RestTemplate restTemplate;
 
-    @Value("/Users/wonseunghyeon/Desktop/plantvillage/forTest/5_dest/Target/")
+    @Value("/home/ubuntu/ai/inputImg/target")
     private String fileDir;
 
-    @Value("http://127.0.0.1:5000/predict")
+    @Value("http://13.209.186.128:5000/predict")
     private String url;
 
     public void saveImg(List<MultipartFile> files) throws IOException {

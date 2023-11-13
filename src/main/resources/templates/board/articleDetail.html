@@ -24,7 +24,7 @@
 </head>
 <body>
 
-<div th:replace="/layout/fragments/nav.html :: nav"></div>
+<div th:replace="layout/fragments/nav.html :: nav"></div>
 
 <input id="hiddenId" type="hidden" th:value="${article.articleId}">
 
@@ -250,7 +250,7 @@
     </div>
 </div>
 
-<footer th:replace="/layout/fragments/footer.html :: footer"></footer>
+<footer th:replace="layout/fragments/footer.html :: footer"></footer>
 
 </body>
 
