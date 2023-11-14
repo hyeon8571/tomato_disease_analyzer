@@ -1,10 +1,10 @@
 #!/bin/bash
 PROJECT_NAME="tomato_disease_analyzer"
-JAR_PATH="/home/ubuntu/tomato_disease_analyzer/build/libs/*.jar"
+JAR_PATH="/home/ubuntu/springboot-CI-CD/tomato_disease_analyzer/build/libs/*.jar"
 DEPLOY_PATH=/home/ubuntu/$PROJECT_NAME/
-DEPLOY_LOG_PATH="/home/ubuntu/$PROJECT_NAME/deploy.log"
-DEPLOY_ERR_LOG_PATH="/home/ubuntu/$PROJECT_NAME/deploy_err.log"
-APPLICATION_LOG_PATH="/home/ubuntu/$PROJECT_NAME/application.log"
+DEPLOY_LOG_PATH="/home/ubuntu/springboot-CI-CD/$PROJECT_NAME/deploy.log"
+DEPLOY_ERR_LOG_PATH="/home/ubuntu/springboot-CI-CD/$PROJECT_NAME/deploy_err.log"
+APPLICATION_LOG_PATH="/home/ubuntu/springboot-CI-CD/$PROJECT_NAME/application.log"
 BUILD_JAR=$(ls $JAR_PATH)
 JAR_NAME=$(basename $BUILD_JAR)
 
