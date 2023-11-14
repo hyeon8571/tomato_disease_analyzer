@@ -17,7 +17,6 @@ import tomato.classifier.domain.entity.User;
 import tomato.classifier.domain.type.SearchType;
 import tomato.classifier.service.ArticleService;
 import tomato.classifier.service.AuthService;
-import tomato.classifier.service.CommentService;
 import tomato.classifier.service.PaginationService;
 
 import java.util.List;
