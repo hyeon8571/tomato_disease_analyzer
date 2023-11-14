@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import tomato.classifier.domain.dto.ArticleDto;
 import tomato.classifier.domain.dto.request.ArticleRequest;
-import tomato.classifier.handler.ex.CustomApiException;
-
 import javax.persistence.*;
 import java.util.Set;
 
