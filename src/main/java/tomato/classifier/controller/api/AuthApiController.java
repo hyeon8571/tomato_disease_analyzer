@@ -47,7 +47,7 @@ public class AuthApiController {
 
         authService.signup(joinReqDto);
 
-        return "/message/signupMessage";
+        return "message/signupMessage";
     }
 
     @GetMapping("/logout")
