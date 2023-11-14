@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/tomato_disease_analyzer
+    destination: /home/ubuntu/springboot-CI-CD/tomato_disease_analyzer
     overwrite: yes
 
 permission:
