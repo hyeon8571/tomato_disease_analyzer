@@ -26,7 +26,7 @@ public class MainService {
 
     private final RestTemplate restTemplate;
 
-    @Value("/home/ubuntu/ai/inputImg/target")
+    @Value("/home/ubuntu/ai/inputImg/target/")
     private String fileDir;
 
     @Value("http://13.209.186.128:5000/predict")
