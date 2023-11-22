@@ -6,7 +6,7 @@
 
 ![img.png](readme_img/img.png)
 
-## <img src="readme_img/img_3.png" width="40" height="40"> 구현기능 설명
+## <img src="readme_img/img_3.png" width="40" height="40" align='center'> 구현기능 설명
 <hr>
 
 ### <img src="readme_img/img_4.png" width="20" height="20"> 질병 분석 및 해결방안 제시
@@ -26,15 +26,15 @@ CNN 기반 이미지 분류 모델인 Densenet을 이용하여 사용자가 전�
 
 ## 개발 도구
 
-## <img src="readme_img/img_5.png" width="40" height="40"> 데이터베이스 구조
+## <img src="readme_img/img_5.png" width="40" height="40" align='center'> 데이터베이스 구조
 <hr>
 <img src="readme_img/img_1.png" width="800" height="450"> 
 
-## <img src="readme_img/img_6.png" width="40" height="40"> API 명세서
+## <img src="readme_img/img_6.png" width="40" height="40" align='center'> API 명세서
 <hr>
 <img src="readme_img/img_2.png" width="800" height="450">
 
-## <img src="readme_img/img_8.png" width="40" height="40"> 역할 분담
+## <img src="readme_img/img_8.png" width="40" height="40" align='center'> 역할 분담
 <hr>
 
 ### 인공지능
