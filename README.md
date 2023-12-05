@@ -14,7 +14,7 @@ CNN 기반 이미지 분류 모델인 Densenet을 이용하여 사용자가 전�
 분석된 결과를 토대로 해결방안을 제시해줍니다.
 
 ### <img src="readme_img/img_4.png" width="20" height="20"> 회원가입 및 로그인 기능
-게시글/댓글 작성 및 추천 기능을 이용하기 위해 회원가입 및 로그인 기능을 구현했습니다. 
+게시글/댓글 작성 및 추천 기능을 이용하기 위해 회원가입 및 로그인 기능을 구현했습니다.
 
 ### <img src="readme_img/img_4.png" width="20" height="20"> 커뮤니티 기능
 농작물을 제배하는 사람들을 위한 커뮤니티 기능을 제공합니다.<br>
@@ -23,8 +23,12 @@ CNN 기반 이미지 분류 모델인 Densenet을 이용하여 사용자가 전�
 ### <img src="readme_img/img_4.png" width="20" height="20"> 게시물 검색 기능
 제목/본문/작성자로 특정 게시물을 검색할 수 있습니다.<br>
 사용자들은 본인이 원하는 게시물을 좀 더 쉽게 찾을 수 있습니다.
+<hr>
 
-## 개발 도구
+## <img src="readme_img/img_9.png" width="40" height="40" align='center'> 개발 도구
+<hr>
+<img src="readme_img/img_10.png" width="800" height="450">
+
 
 ## <img src="readme_img/img_5.png" width="40" height="40" align='center'> 데이터베이스 구조
 <hr>
